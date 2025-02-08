@@ -1,6 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
     const Grade = sequelize.define('Grade', {
-        grade: DataTypes.INTEGER,
+        grade: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                min: 1,
+                max: 5,
+            },
+        },
         studentId: DataTypes.INTEGER,
         subjectId: DataTypes.INTEGER,
     });
